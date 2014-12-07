@@ -2,8 +2,7 @@
  
     $.fn.mailtocopy = function() {
  
-		var email = this.attr('href').replace("mailto:", "");
-        email = email.split('?')[0];
+		
         
         
 		$("<style>")
@@ -59,32 +58,39 @@
 				}\
 				")
 			.appendTo("head");
-        
-        var wrapper = $("<span>")
-        	.prop("class","mailto-copy-wrapper")
-	        .insertBefore(this);
-		    
-		this.css({zIndex:1, position:'relative'}).appendTo(wrapper);
-        
-        var addon = $("<span>")
-        	.prop("class","mailto-copy-addon")
-	        .html("<input type='text' name='mailto-email' class='mailto-copy-field' value='"+ email +"'>")
-		    .appendTo(wrapper);
-		    
-		var label = $("<label>")
-        	.prop("class","mailto-copy-label")
-        	.prop("for","mailto-email")
-	        .html("CMD/CTRL + C to Copy")
-		    .appendTo(addon);
-		
-		this.hover(function(){
-			$('.mailto-copy-field').select();
-	        
 			
-		})
+        return this.each(function(idx) {
+	        
+	        var link = $(this);
+	        var email = link.attr('href').replace("mailto:", "");
+			email = email.split('?')[0];
+	        var wrapper = $("<span>")
+        	.prop("class","mailto-copy-wrapper")
+	        .insertBefore(link);
+		    
+			link.css({zIndex:1, position:'relative'}).appendTo(wrapper);
+	        
+	        var addon = $("<span>")
+	        	.prop("class","mailto-copy-addon")
+		        .html("<input type='text' name='mailto-email' class='mailto-copy-field' value='"+ email +"'>")
+			    .appendTo(wrapper);
+			    
+			var label = $("<label>")
+	        	.prop("class","mailto-copy-label")
+	        	.prop("for","mailto-email")
+		        .html("CMD/CTRL + C to Copy")
+			    .appendTo(addon);
+			
+			link.hover(function(){
+				$(this).children('.mailto-copy-field').select();
+		        
+				
+			})
+	    });
+        
  
         
-        return this;
+        
  
     };
  
