@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>Demo MailtoCopy</title>
+		<script src="jquery-2.1.1.min.js" charset="utf-8"></script>
+		<script src="jquery.mailtocopy.js" charset="utf-8"></script>
+		
+		<script>
+			$(document).ready(function(){
+				
+				$('.some-mail-link').mailtocopy();
+				
+			});
+		</script>
+		<style type="text/css" media="screen">
+			body{
+				font-family: Helvetica, sans-serif;
+				background: #f0f0f0;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>MailtoCopy jQuery Plugin</h1>
+		<p>This is a demonstration of the MailtoCopy jQuery plugin. It's goal is to allow users to click mail links to use their device's native email client OR copy addresses to use a web-based client easily. If you write your mailto link as normal and add a class, you can call <code>mailtocopy()</code> on that class using jQuery. Check out this email address: <a href="mailto:julian.kussman+mailtocopy@gmail.com,julian.kussman+mailtoother@gmail.com?subject=Hey%20man" class="some-mail-link">My Email Address</a> it has the MailtoCopy plugin applied to it. The raw link continues to function and doesn't disrupt the flow of the paragraph or other inline elements.</p>
+		
+		<p>This plugin handles all standard options on the mailto link (multiple addresses, subject lines, etc.) There are no options, CSS is added to the <code>&lt;head&gt;</code>. The default CSS disables the plugin functionality on devices smaller than 768px wide (&lt; desktop). This prevents hovers from overriding clicks on mobile devices and most people use the native email client on their mobile device anyway. Override CSS as you wish. </p>
+	</body>
+</html>
